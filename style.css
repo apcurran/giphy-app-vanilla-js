@@ -1,0 +1,86 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+h1,
+input,
+button {
+    font-family: 'Segoe UI', 'Roboto', arial, sans-serif;
+    letter-spacing: .02em;
+}
+
+body {
+    background-color: #fefefe;
+}
+
+.title {
+    margin: 2rem;
+    text-align: center;
+    font-size: 2.1rem;
+    font-weight: 500;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+}
+
+.form-field {
+    width: 35rem;
+    max-width: 90%;
+    display: flex;
+    margin-bottom: 6rem;
+}
+
+.form-field-input {
+    flex-grow: 1;
+    padding: .5rem;
+    font-size: 1.05rem;
+    border: none;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background-color: hsl(210, 38%, 94%);
+}
+
+.form-field-input::placeholder {
+    color: #a0aec0;
+}
+
+.form-field-submit {
+    padding: .75rem 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+
+    color: #222;
+    font-weight: 500;
+    background-color: #9ae6b4;
+
+    transition: background-color 150ms ease-in-out;
+}
+
+.form-field-submit:hover {
+    background-color: hsl(141, 60%, 65%);
+}
+
+.results {
+    width: 75rem;
+    max-width: 90%;
+    margin: 0 auto 4rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+    grid-gap: 1.5rem;
+    grid-auto-flow: dense;
+}
+
+.results-gif {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 5px 13px rgba(0, 0, 0, .25);
+}
