@@ -13,7 +13,6 @@ function clearPreviousResults() {
 
 function createImages(gifs) {
     for (const gif of gifs) {
-        console.log(gif);
         const img = document.createElement("img");
         const gifSrc = gif.images.fixed_height.url;
         img.src = gifSrc;
@@ -25,7 +24,6 @@ function createImages(gifs) {
 
 async function getGifs(event) {
     event.preventDefault();
-
     clearPreviousResults();
 
     const searchInputValue = searchInput.value;
