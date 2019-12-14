@@ -25,13 +25,15 @@ body {
 .form {
     display: flex;
     justify-content: center;
+    max-width: 92.5%;
+    width: 36rem;
+    margin: 0 auto;
 }
 
 .form-field {
-    width: 35rem;
-    max-width: 92.5%;
     display: flex;
-    margin-bottom: 6rem;
+    margin-bottom: 5rem;
+    flex-grow: 1;
 }
 
 .form-field-input {
@@ -91,10 +93,10 @@ body {
         font-size: 2rem;
     }
 
-    .form-field-input { font-size: .975rem; }
+    .form-field-input { font-size: .95rem; }
 
     .form-field-submit {
-        font-size: .975rem;
+        font-size: .95rem;
         padding: .5rem 1.5rem;
     }
 }
