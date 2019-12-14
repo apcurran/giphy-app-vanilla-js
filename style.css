@@ -25,7 +25,7 @@ body {
 .form {
     display: flex;
     justify-content: center;
-    max-width: 92.5%;
+    max-width: 90%;
     width: 36rem;
     margin: 0 auto;
 }
