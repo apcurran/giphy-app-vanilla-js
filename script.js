@@ -1,6 +1,7 @@
 "use strict";
 
 const apiUrl = 'https://api.giphy.com/v1/gifs/search?api_key=XEAkZeR976diLYKcNhMlxn8S9Uvbbfza&rating=pg&q=';
+const limitVal = 20;
 const main = document.querySelector(".results");
 const form = document.querySelector(".form");
 const searchInput = document.getElementById("search");
@@ -29,7 +30,7 @@ async function getGifs(event) {
     clearPreviousResults();
 
     const searchInputValue = searchInput.value;
-    const gifyUrl = `${apiUrl}${searchInputValue}`;
+    const gifyUrl = `${apiUrl}${searchInputValue}&limit=${limitVal}`;
     const response = await fetch(gifyUrl, { mode: "cors" });
     const data = await response.json();
     const gifData = await data.data;
