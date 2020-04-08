@@ -1,9 +1,9 @@
 "use strict";
 
-const main = document.querySelector(".results");
-const searchInput = document.getElementById("search");
-const submitBtn = document.querySelector(".form-field-submit");
 const apiUrl = 'https://api.giphy.com/v1/gifs/search?api_key=XEAkZeR976diLYKcNhMlxn8S9Uvbbfza&rating=pg&q=';
+const main = document.querySelector(".results");
+const form = document.querySelector(".form");
+const searchInput = document.getElementById("search");
 
 function clearPreviousResults() {
     while (main.firstChild) {
@@ -15,9 +15,11 @@ function createImages(gifs) {
     for (const gif of gifs) {
         const img = document.createElement("img");
         const gifSrc = gif.images.fixed_height.url;
+
         img.src = gifSrc;
         img.alt = "Gif";
         img.classList.add("results-gif");
+        
         main.append(img);
     }
 }
@@ -36,4 +38,4 @@ async function getGifs(event) {
     searchInput.value = "";
 }
 
-submitBtn.addEventListener("click", getGifs);
+form.addEventListener("submit", getGifs);
