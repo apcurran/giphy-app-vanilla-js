@@ -2,7 +2,7 @@ import http from "node:http";
 
 const server = http.createServer();
 
-server.on("request", (req, res) => {
+server.on("request", async (req, res) => {
     // handle CORS
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -24,6 +24,13 @@ server.on("request", (req, res) => {
     }
 
     try {
+        let body = "";
+
+        for await (let chunk of req) {
+            body += chunk;
+        }
+
+        const { searchValue, limit } = JSON.parse(body);
     } catch (error) {
         console.error(error);
         res.writeHead(500, { "Content-Type": "application/json" });
