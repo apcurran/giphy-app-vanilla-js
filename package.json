@@ -7,6 +7,9 @@
         "lint": "npx oxlint .",
         "lint:fix": "npx oxlint --fix .",
         "format:check": "npx prettier . --check",
-        "format:write": "npx prettier . --write"
-    }
+        "format:write": "npx prettier . --write",
+        "start": "node server.js",
+        "dev-server": "node --env-file=.env server.js"
+    },
+    "type": "module"
 }
