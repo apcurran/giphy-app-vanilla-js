@@ -9,7 +9,7 @@
         "format:check": "npx prettier . --check",
         "format:write": "npx prettier . --write",
         "start": "node server.js",
-        "dev-server": "node --env-file=.env server.js"
+        "dev-server": "node --watch --env-file=.env server.js"
     },
     "type": "module"
 }
