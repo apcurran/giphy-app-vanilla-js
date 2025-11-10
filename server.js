@@ -23,6 +23,17 @@ server.on("request", (req, res) => {
         return;
     }
 
+    try {
+    } catch (error) {
+        console.error(error);
+        res.writeHead(500, { "Content-Type": "application/json" });
+        res.end(
+            JSON.stringify({
+                error: "Server error",
+            }),
+        );
+    }
+
     // handle correct requests
     res.writeHead(200, { "Content-Type": "application/json" });
     res.end(
