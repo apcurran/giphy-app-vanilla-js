@@ -1,6 +1,6 @@
 "use strict";
 
-const apiUrl = 'https://api.giphy.com/v1/gifs/search?api_key=XEAkZeR976diLYKcNhMlxn8S9Uvbbfza&rating=pg&q=';
+const apiUrl = '<your-api-key-here>';
 const limitVal = 20;
 const main = document.querySelector(".results");
 const form = document.querySelector(".form");
@@ -38,5 +38,6 @@ async function getGifs(event) {
     createImages(gifData);
     searchInput.value = "";
 }
+
 
 form.addEventListener("submit", getGifs);
