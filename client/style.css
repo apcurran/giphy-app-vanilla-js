@@ -7,8 +7,8 @@
 h1,
 input,
 button {
-    font-family: 'Segoe UI', 'Roboto', arial, sans-serif;
-    letter-spacing: .02em;
+    font-family: "Segoe UI", "Roboto", arial, sans-serif;
+    letter-spacing: 0.02em;
 }
 
 body {
@@ -38,7 +38,7 @@ body {
 
 .form-field-input {
     flex-grow: 1;
-    padding: .5rem;
+    padding: 0.5rem;
     font-size: 1.05rem;
     border: none;
     border-top-left-radius: 4px;
@@ -51,9 +51,9 @@ body {
 }
 
 .form-field-submit {
-    padding: .75rem 2.5rem;
+    padding: 0.75rem 2.5rem;
     text-transform: uppercase;
-    letter-spacing: .08em;
+    letter-spacing: 0.08em;
     font-size: 1rem;
     cursor: pointer;
     border: none;
@@ -84,7 +84,7 @@ body {
 .results-gif {
     width: 100%;
     border-radius: 4px;
-    box-shadow: 0 5px 13px rgba(0, 0, 0, .25);
+    box-shadow: 0 5px 13px rgba(0, 0, 0, 0.25);
 }
 
 @media screen and (max-width: 32em) {
@@ -93,10 +93,12 @@ body {
         font-size: 2rem;
     }
 
-    .form-field-input { font-size: .95rem; }
+    .form-field-input {
+        font-size: 0.95rem;
+    }
 
     .form-field-submit {
-        font-size: .95rem;
-        padding: .5rem 1.5rem;
+        font-size: 0.95rem;
+        padding: 0.5rem 1.5rem;
     }
 }

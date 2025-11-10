@@ -1,6 +1,6 @@
 "use strict";
 
-const apiUrl = '<your-api-key-here>';
+const apiUrl = "<your-api-key-here>";
 const limitVal = 20;
 const main = document.querySelector(".results");
 const form = document.querySelector(".form");
@@ -20,7 +20,7 @@ function createImages(gifs) {
         img.src = gifSrc;
         img.alt = "Gif";
         img.classList.add("results-gif");
-        
+
         main.append(img);
     }
 }
@@ -38,6 +38,5 @@ async function getGifs(event) {
     createImages(gifData);
     searchInput.value = "";
 }
-
 
 form.addEventListener("submit", getGifs);

@@ -4,8 +4,8 @@
 
 ## Features:
 
-* Fetch API with Async/Await
+- Fetch API with Async/Await
 
-* Search for any topic using the Giphy API
+- Search for any topic using the Giphy API
 
-* Mobile-responsive layout
+- Mobile-responsive layout

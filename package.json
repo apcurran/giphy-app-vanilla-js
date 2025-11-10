@@ -1,6 +1,12 @@
 {
-  "devDependencies": {
-    "oxlint": "^1.28.0",
-    "prettier": "3.6.2"
-  }
+    "devDependencies": {
+        "oxlint": "^1.28.0",
+        "prettier": "3.6.2"
+    },
+    "scripts": {
+        "lint": "npx oxlint .",
+        "lint:fix": "npx oxlint --fix .",
+        "format:check": "npx prettier . --check",
+        "format:write": "npx prettier . --write"
+    }
 }
