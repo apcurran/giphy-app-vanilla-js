@@ -1,7 +1,5 @@
 # Giphy App (Vanilla JS)
 
-[Link](https://apcurran.github.io/giphy-app-vanilla-js/)
-
 ## Features:
 
 - Fetch API with Async/Await
