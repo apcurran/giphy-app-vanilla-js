@@ -30,7 +30,16 @@ server.on("request", async (req, res) => {
             body += chunk;
         }
 
-        const { searchValue, limit } = JSON.parse(body);
+        const { searchValue } = JSON.parse(body);
+        const limit = 20;
+        const giphyUrl = `https://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_KEY}&q=${searchValue}&limit=${limit}`;
+        const giphyResponse = await fetch(giphyUrl);
+        const giphyData = await giphyResponse.json();
+
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify(giphyData));
+
+        // TODO: return data to client
     } catch (error) {
         console.error(error);
         res.writeHead(500, { "Content-Type": "application/json" });

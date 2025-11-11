@@ -1,7 +1,6 @@
 "use strict";
 
 const apiUrl = "http://localhost:5000/api/giphy-proxy";
-const limitVal = 20;
 const main = document.querySelector(".results");
 const form = document.querySelector(".form");
 const searchInput = document.getElementById("search");
@@ -30,16 +29,15 @@ async function getGifs(event) {
     clearPreviousResults();
 
     const searchInputValue = searchInput.value;
-    // const gifyUrl = `${apiUrl}${searchInputValue}&limit=${limitVal}`;
     const response = await fetch(apiUrl, {
         method: "POST",
         body: JSON.stringify({
             searchValue: searchInputValue,
-            limit: limitVal,
         }),
     });
-    const data = await response.json();
+    const { data } = await response.json();
     createImages(data);
+    // clear search input
     searchInput.value = "";
 }
 
