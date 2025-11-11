@@ -14,10 +14,11 @@ function clearPreviousResults() {
 function createImages(gifs) {
     for (const gif of gifs) {
         const img = document.createElement("img");
-        const gifSrc = gif.images.fixed_height.url;
+        const gifSrc = gif.images.fixed_height.webp;
+        const { alt_text } = gif;
 
         img.src = gifSrc;
-        img.alt = "Gif";
+        img.alt = alt_text;
         img.classList.add("results-gif");
 
         main.append(img);
