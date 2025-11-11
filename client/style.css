@@ -43,7 +43,7 @@ img {
 
 .form-field-input {
     flex-grow: 1;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     font-size: 1.05rem;
     border: none;
     border-top-left-radius: 4px;
