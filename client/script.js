@@ -11,7 +11,12 @@ async function getGifs(event) {
     clearPreviousResults();
 
     const apiUrl = "http://localhost:5000/api/giphy-proxy";
-    const searchInputValue = searchInput.value;
+    const searchInputValue = searchInput.value.trim();
+
+    if (!searchInputValue) {
+        return;
+    }
+
     const response = await fetch(apiUrl, {
         method: "POST",
         body: JSON.stringify({
