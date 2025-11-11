@@ -12,19 +12,23 @@ function clearPreviousResults() {
 
 function createImages(gifs) {
     for (const gif of gifs) {
-        const img = document.createElement("img");
+        const vid = document.createElement("video");
         const { alt_text } = gif;
-        const gifSrc = gif.images.fixed_height.webp;
+        const gifSrc = gif.images.fixed_height.mp4;
         const width = gif.images.fixed_height.width;
         const height = gif.images.fixed_height.height;
 
-        img.src = gifSrc;
-        img.alt = alt_text;
-        img.width = width;
-        img.height = height;
-        img.classList.add("results-gif");
+        vid.src = gifSrc;
+        vid.ariaLabel = alt_text;
+        vid.width = width;
+        vid.height = height;
+        vid.autoplay = true;
+        vid.loop = true;
+        vid.muted = true;
+        vid.playsInline = true;
+        vid.classList.add("results-gif");
 
-        main.append(img);
+        main.append(vid);
     }
 }
 
