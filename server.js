@@ -1,13 +1,11 @@
 import http from "node:http";
 
+import { setCors } from "./utils/set-cors.js";
+
 const server = http.createServer();
 
 server.on("request", async (req, res) => {
-    // handle CORS
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-
+    setCors(res);
     // handle pre-flight request
     if (req.method === "OPTIONS") {
         res.writeHead(204);
@@ -31,8 +29,9 @@ server.on("request", async (req, res) => {
         }
 
         const { searchValue } = JSON.parse(body);
-        const limit = 20;
-        const giphyUrl = `https://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_KEY}&q=${searchValue}&limit=${limit}`;
+        const giphySearch = encodeURIComponent(searchValue);
+        const giphyLimit = 20;
+        const giphyUrl = `https://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_KEY}&q=${giphySearch}&limit=${giphyLimit}`;
         const giphyResponse = await fetch(giphyUrl);
         const giphyData = await giphyResponse.json();
 
