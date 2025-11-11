@@ -38,8 +38,6 @@ server.on("request", async (req, res) => {
 
         res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify(giphyData));
-
-        // TODO: return data to client
     } catch (error) {
         console.error(error);
         res.writeHead(500, { "Content-Type": "application/json" });
