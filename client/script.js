@@ -25,9 +25,7 @@ async function getGifs(event) {
 }
 
 function clearPreviousResults() {
-    while (main.firstChild) {
-        main.removeChild(main.firstChild);
-    }
+    main.replaceChildren();
 }
 
 function createImages(gifs) {
