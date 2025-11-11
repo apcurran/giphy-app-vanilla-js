@@ -32,11 +32,9 @@ function createImages(gifs) {
     for (const gif of gifs) {
         const vid = document.createElement("video");
         const { alt_text } = gif;
-        const gifSrc = gif.images.fixed_height.mp4;
-        const width = gif.images.fixed_height.width;
-        const height = gif.images.fixed_height.height;
+        const { mp4, width, height } = gif.images.fixed_height;
 
-        vid.src = gifSrc;
+        vid.src = mp4;
         vid.ariaLabel = alt_text;
         vid.width = width;
         vid.height = height;
