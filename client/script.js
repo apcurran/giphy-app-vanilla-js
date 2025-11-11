@@ -1,8 +1,28 @@
 "use strict";
 
 const main = document.querySelector(".results");
-const form = document.querySelector(".form");
 const searchInput = document.getElementById("search");
+const form = document.querySelector(".form");
+
+form.addEventListener("submit", getGifs);
+
+async function getGifs(event) {
+    event.preventDefault();
+    clearPreviousResults();
+
+    const apiUrl = "http://localhost:5000/api/giphy-proxy";
+    const searchInputValue = searchInput.value;
+    const response = await fetch(apiUrl, {
+        method: "POST",
+        body: JSON.stringify({
+            searchValue: searchInputValue,
+        }),
+    });
+    const { data } = await response.json();
+    createImages(data);
+    // clear search input
+    searchInput.value = "";
+}
 
 function clearPreviousResults() {
     while (main.firstChild) {
@@ -31,23 +51,3 @@ function createImages(gifs) {
         main.append(vid);
     }
 }
-
-async function getGifs(event) {
-    event.preventDefault();
-    clearPreviousResults();
-
-    const apiUrl = "http://localhost:5000/api/giphy-proxy";
-    const searchInputValue = searchInput.value;
-    const response = await fetch(apiUrl, {
-        method: "POST",
-        body: JSON.stringify({
-            searchValue: searchInputValue,
-        }),
-    });
-    const { data } = await response.json();
-    createImages(data);
-    // clear search input
-    searchInput.value = "";
-}
-
-form.addEventListener("submit", getGifs);
