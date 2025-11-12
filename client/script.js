@@ -53,8 +53,16 @@ async function fetchGifs(searchValue) {
 }
 
 /**
+ * @typedef {object} VideoData
+ * @property {string} src
+ * @property {string} width
+ * @property {string} height
+ * @property {string} alt_text
+ */
+
+/**
  * @param {object} gifData
- * @returns {object}
+ * @returns {VideoData}
  */
 function transformApiDataToVideoData(gifData) {
     const { alt_text } = gifData;
@@ -69,7 +77,7 @@ function transformApiDataToVideoData(gifData) {
 }
 
 /**
- * @param {object[]} videosData
+ * @param {VideoData[]} videosData
  * @returns {void} - side effect of adding video DOM elems to main elem
  */
 function renderVideos(videosData) {
