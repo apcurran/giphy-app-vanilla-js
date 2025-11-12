@@ -74,12 +74,9 @@ function transformApiDataToVideoData(gifData) {
  */
 function renderVideos(videosData) {
     // create all video elems in memory
-    const videoElements = videosData.map(function createVideoElem({
-        src,
-        width,
-        height,
-        alt_text,
-    }) {
+    let fragment = document.createDocumentFragment();
+
+    for (let { src, width, height, alt_text } of videosData) {
         let vid = document.createElement("video");
         vid.src = src;
         vid.width = width;
@@ -91,8 +88,9 @@ function renderVideos(videosData) {
         vid.playsInline = true;
         vid.classList.add("results-gif");
 
-        return vid;
-    });
+        fragment.append(vid);
+    }
+
     // batch update to DOM
-    main.replaceChildren(...videoElements);
+    main.replaceChildren(fragment);
 }
