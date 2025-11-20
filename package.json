@@ -10,7 +10,8 @@
         "format:check": "npx prettier . --check",
         "format:write": "npx prettier . --write",
         "start": "node ./server/index.js",
-        "dev-server": "node --watch --env-file=.env ./server/index.js"
+        "dev-server": "node --watch --env-file=.env ./server/index.js",
+        "test-server": "node --test"
     },
     "type": "module"
 }
