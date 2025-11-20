@@ -8,8 +8,8 @@
         "lint:fix": "npx oxlint --fix .",
         "format:check": "npx prettier . --check",
         "format:write": "npx prettier . --write",
-        "start": "node index.js",
-        "dev-server": "node --watch --env-file=.env index.js"
+        "start": "node ./server/index.js",
+        "dev-server": "node --watch --env-file=.env ./server/index.js"
     },
     "type": "module"
 }
