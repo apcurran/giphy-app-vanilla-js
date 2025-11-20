@@ -48,7 +48,4 @@ server.on("request", async (req, res) => {
     }
 });
 
-// server.listen(process.env.PORT, () => {
-//     console.log(`Server listening on port ${process.env.PORT}.`);
-// });
 export { server };
