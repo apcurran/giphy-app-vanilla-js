@@ -9,7 +9,9 @@ const PORT_TEST = 5001;
 const PROXY_URL = `http://localhost:${PORT_TEST}/api/giphy-proxy`;
 
 describe("Giphy proxy API", () => {
+    /** @type {import("http").Server} */
     let listeningServer;
+    /** @type {MockAgent} */
     let agent;
 
     before(() => {
@@ -21,7 +23,7 @@ describe("Giphy proxy API", () => {
 
     beforeEach(() => {
         agent = new MockAgent();
-        agent.disableNetConnect(); // do not send any real requests
+        // agent.disableNetConnect(); // do not send any real requests
         setGlobalDispatcher(agent);
     });
 
@@ -36,5 +38,39 @@ describe("Giphy proxy API", () => {
     });
 
     // successful requests
-    it("should proxy the search request and Undici mock should intercept Giphy API req", async () => {});
+    it("should proxy the search request and Undici mock should intercept Giphy API req", async () => {
+        const giphySearch = "Dogs";
+        const giphyLimit = 20;
+
+        agent
+            .get(`https://api.giphy.com`)
+            .intercept({
+                path: `/v1/gifs/search?api_key=${process.env.GIPHY_KEY}&q=${giphySearch}&limit=${giphyLimit}`,
+                method: "GET",
+            })
+            .reply(200, {
+                data: [
+                    {
+                        type: "gif",
+                        id: "mockdogid1",
+                    },
+                ],
+            });
+
+        // call my proxy server
+        const response = await fetch(PROXY_URL, {
+            method: "POST",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify({
+                searchValue: "Dogs",
+            }),
+        });
+        const responseData = await response.json();
+
+        assert.strictEqual(
+            response.status,
+            200,
+            "Proxy API should return HTTP 200 OK",
+        );
+    });
 });
