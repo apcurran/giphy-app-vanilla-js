@@ -41,6 +41,14 @@ describe("Giphy proxy API", () => {
     it("should proxy the search request and Undici mock should intercept Giphy API req", async () => {
         const giphySearch = "Dogs";
         const giphyLimit = 20;
+        const mockData = {
+            data: [
+                {
+                    type: "gif",
+                    id: "mockdogid1",
+                },
+            ],
+        };
 
         agent
             .get(`https://api.giphy.com`)
@@ -48,14 +56,7 @@ describe("Giphy proxy API", () => {
                 path: `/v1/gifs/search?api_key=${process.env.GIPHY_KEY}&q=${giphySearch}&limit=${giphyLimit}`,
                 method: "GET",
             })
-            .reply(200, {
-                data: [
-                    {
-                        type: "gif",
-                        id: "mockdogid1",
-                    },
-                ],
-            });
+            .reply(200, mockData);
 
         // call my proxy server
         const response = await fetch(PROXY_URL, {
@@ -71,6 +72,12 @@ describe("Giphy proxy API", () => {
             response.status,
             200,
             "Proxy API should return HTTP 200 OK",
+        );
+
+        assert.deepStrictEqual(
+            responseData,
+            mockData,
+            "Proxy should return the fake Giphy response data",
         );
     });
 });
