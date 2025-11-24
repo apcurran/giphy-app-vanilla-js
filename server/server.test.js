@@ -12,7 +12,7 @@ describe("Giphy proxy API", () => {
     /** @type {import("http").Server} */
     let listeningServer;
     /** @type {MockAgent} */
-    let agent;
+    let mockAgent;
 
     before(() => {
         // mock env variable
@@ -22,9 +22,9 @@ describe("Giphy proxy API", () => {
     });
 
     beforeEach(() => {
-        agent = new MockAgent();
+        mockAgent = new MockAgent();
         // agent.disableNetConnect(); // do not send any real requests
-        setGlobalDispatcher(agent);
+        setGlobalDispatcher(mockAgent);
     });
 
     after(() => {
@@ -34,7 +34,7 @@ describe("Giphy proxy API", () => {
     });
 
     afterEach(() => {
-        agent.assertNoPendingInterceptors();
+        mockAgent.assertNoPendingInterceptors();
     });
 
     // successful requests
@@ -50,7 +50,7 @@ describe("Giphy proxy API", () => {
             ],
         };
 
-        agent
+        mockAgent
             .get(`https://api.giphy.com`)
             .intercept({
                 path: `/v1/gifs/search?api_key=${process.env.GIPHY_KEY}&q=${giphySearch}&limit=${giphyLimit}`,
